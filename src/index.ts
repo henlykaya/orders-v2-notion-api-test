@@ -28,7 +28,7 @@ interface Project {
 const start = async () => {
     const projectsDB = process.env['PROJECTS_DB']!;
     const ordersDB = process.env['ORDERS_DB']!;
-    const notionClient = new Client({ auth: 'secret_OWvJWuJVHzXsE2OJfpKPEZPvBIxFoj3JjBHsNYdcS5y' });
+    const notionClient = new Client({ auth: process.env['NOTION_INTEGRATION_TOKEN']! });
     const projects = (await notionClient.databases.query({ database_id: projectsDB })).results as DatabaseObjectResponse[];
     const orders = (await notionClient.databases.query({ database_id: ordersDB })).results as DatabaseObjectResponse[];
 
